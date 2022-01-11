@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Blogs
+{% endblock title %}
+
+
+{% block content %}
+    <div class="container-fluid mt-5">
+        <h2 align="center">Blogs</h2>
+        {% if user.notes|length == 0 %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>No blogs found Please Add some blogs </strong>
+          </div>
+          
+        {% else %}
+        <table class="table table-dark ">
+            <thead>
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Title</th>
+                <th scope="col">Blog</th>
+                <th scope="col">options</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for blog in user.notes  %}
+              <tr>
+                <td>{{loop.index}}</td>
+                <td>{{blog.title}}</td>
+                <td>{{blog.blog}}</td>
+                <td><a href='/deleteblog/{{blog.id}}'  type="button" class="btn btn-danger btn-sm m-2">Delete</a>
+                    <a href='/updateblog/{{blog.id}}' type="button" class="btn btn-info btn-sm m-2">Update</a>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% endif %}
+    </div>
+{% endblock content %}

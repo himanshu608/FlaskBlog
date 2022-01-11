@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Blog Edit
+{% endblock title %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Edit Blog</h2>
+    <form method="post">
+        <div class="mb-3">
+            <label for="title" class="form-label">Blog Title</label>
+            <input name='title' value="{{blog.title}}" type="text" class="form-control" id="title">
+        </div>
+        <div class="mb-3">
+            <label for="blog" class="form-label">Blog</label>
+            <textarea  name="blog" class="form-control" id="blog" style="height: 100px">{{blog.blog}}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock content %}
